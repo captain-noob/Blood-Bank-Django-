@@ -1,0 +1,44 @@
+{% include "administrator/header.html" %}
+
+
+
+
+
+<div class="agile-grids">
+				<!-- tables -->
+
+				<div class="agile-tables">
+					<div class="w3l-table-info">
+					  <h2>Confirmed Doner List</h2>
+					    <table id="table">
+						<thead>
+						  <tr>
+                              <th>ID</th>
+                              <th>Name</th>
+                              <th>Gender</th>
+                              <th>Blood Group</th>
+                              <!--<th>DOB</th>-->
+							  <!--<th></th>-->
+
+						  </tr>
+						</thead>
+                            <tbody>
+                            {%  for row in data %}
+						  <tr>
+                            <td>{{ row.id }}</td>
+							<td>{{ row.name }}</td>
+                            <td>{{ row.gender }}</td>
+                            <td>{{ row.bloodgroup.name }}</td>
+                            <!--<td>{{ row.dob }}</td>-->
+                            <!--<td ><a href="{% url 'confirmdoner' value=row.login.id %}" >Confirm</a></td>-->
+                          </tr>
+                            {% endfor %}
+
+
+						</tbody>
+					  </table>
+					</div>
+                </div>
+</div>
+
+{% include "administrator/footer.html" %}

@@ -1,0 +1,110 @@
+{% include "user/header.html" %}
+
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 mb-5">
+              <h5>Doner Registration</h5>
+            <form action="{% url 'donerRegaction' %}" class="p-5 bg-white" method="POST">
+  {% csrf_token %}
+                <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                    {% if data %}
+                    <label class="font-weight-bold" >{{data}}</label><br>
+                    {% endif%}
+                  <label class="font-weight-bold" >Doner Name</label>
+                  <input type="text" name="name" class="form-control" placeholder="eg. Anoop" required>
+                </div>
+              </div>
+
+
+                <div class="row form-group">
+               <label class="font-weight-bold" >Address</label>
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <textarea name="address" class="form-control" cols="30" rows="5" required></textarea>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <label class="font-weight-bold" >Gender</label>
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label for="option-job-type-1">
+                    <input type="radio" id="option-job-type-1" name="gender" value="male" > Male
+                  </label>
+                </div>
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label for="option-job-type-2">
+                    <input type="radio" id="option-job-type-2" name="gender" value="female"> Female
+                  </label>
+                </div>
+              </div>
+
+                <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="font-weight-bold" >Date Of Birth</label>
+                  <input type="date" name="dob" class="form-control" placeholder="DOB" required>
+                </div>
+              </div>
+
+                <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="font-weight-bold" >Phno</label>
+                  <input type="text" name="phno" class="form-control" placeholder="eg. 9955228800" required>
+                </div>
+              </div>
+
+
+              <div class="row form-group mb-5">
+                <div class="col-md-12 mb-3 mb-md-0">
+                 <label class="font-weight-bold" >Blood Group</label>
+                 <select class="form-control" name="blood" required >
+                    <option>Select</option>
+                   {% for p in blood %}
+                          <option value="{{ p.id}}" {% ifequal p.id ov.wid.id %} selected {% endifequal %}>{{p.name}}</option>
+                        {% endfor%}
+
+                    </select>
+                </div>
+              </div>
+
+              <div class="row form-group mb-4">
+                <label class="font-weight-bold" >Weight</label>
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <input type="text" class="form-control" name="weight" placeholder="60 kg" required>
+                </div>
+              </div>
+
+
+                <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="font-weight-bold" >Email</label>
+                  <input type="text" name="email" class="form-control" placeholder="eg. abc@gmail.com" required>
+                </div>
+              </div>
+
+            <div class="row form-group mb-4">
+               <label class="font-weight-bold" >Password</label>
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <input type="password" class="form-control" placeholder="60 kg" name="password" required>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Register Doner" class="btn btn-primary  py-2 px-5">
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="p-4 mb-3 bg-white"  style="background-image: url('/static/user/images/k1 (11).jpg'); height:300px;">
+            </div>
+            <!--<div class="p-4 mb-3 bg-white" style="background-image: url('/static/user/images/k1 (11).jpg'); height:300px;" >-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% include "user/footer.html" %}

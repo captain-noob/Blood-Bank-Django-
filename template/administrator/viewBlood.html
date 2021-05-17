@@ -1,0 +1,41 @@
+{% include "administrator/header.html" %}
+
+
+
+
+
+<div class="agile-grids">
+				<!-- tables -->
+
+				<div class="agile-tables">
+					<div class="w3l-table-info">
+					  <h2>Blood Group List</h2>
+					    <table id="table">
+						<thead>
+						  <tr>
+                              <th>ID</th>
+							<th>Group</th>
+							<th></th>
+							<th></th>
+
+						  </tr>
+						</thead>
+                            <tbody>
+                            {%  for row in data %}
+
+						  <tr>
+                              <td>{{ row.id }}</td>
+							<td>{{ row.name }}</td>
+						<td ><a href="#" >EDIT</a></td>
+                        <td ><a href="#">DELETE</a></td>
+                              </tr>
+              {% endfor %}
+
+
+						</tbody>
+					  </table>
+					</div>
+                </div>
+</div>
+
+{% include "administrator/footer.html" %}

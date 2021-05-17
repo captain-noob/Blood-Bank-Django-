@@ -1,0 +1,46 @@
+{% include "user/header.html" %}
+
+ <div class="p-5 bg-white" >
+<h2 class="font-weight-bold" >My Profile</h2>
+
+{%  for row in data %}
+
+
+              <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="font-weight-bold" >Name</label>
+                          <div class="font-weight-bold" style="margin-left:70px;"> {{row.name}}</div>
+                </div>
+              </div>
+
+
+
+              <div class="row form-group">
+                <label class="font-weight-bold" >Gender</label>
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <div class="font-weight-bold" style="margin-left:70px;">{{row.gender}}</div>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <label class="font-weight-bold" >Description</label>
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <div class="font-weight-bold" style="margin-left:70px;">{{row.bloodgroup.name}}</div>
+                </div>
+              </div>
+
+             <div class="row form-group">
+                <label class="font-weight-bold" >Phno</label>
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <div class="font-weight-bold" style="margin-left:70px;">{{row.phone}}</div>
+                </div>
+              </div>
+
+
+ {% endfor%}
+
+
+ </div>
+
+
+{% include "user/footer.html" %}

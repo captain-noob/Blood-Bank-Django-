@@ -1,0 +1,93 @@
+{% include "user/header.html" %}
+
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 mb-5">
+              <h5>Status </h5>
+            <form action="{% url 'searchaction' %}" class="p-5 bg-white" method="POST">
+                    {% csrf_token %}
+                <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                    {% if result %}
+                    <label class="font-weight-bold" >{{result}}</label><br>
+                    {% endif%}
+
+                </div>
+              </div>
+
+
+              <div class="row form-group mb-5">
+                <div class="col-md-12 mb-3 mb-md-0">
+                 <label class="font-weight-bold">Blood Group</label>
+                  <select class="form-control" name="blood" >
+                    <option>Select</option>
+                   {% for p in blood %}
+                          <option value="{{ p.id}}" >{{p.name}}</option>
+                        {% endfor%}
+                    </select>
+                </div>
+              </div>
+
+                <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Search" class="btn btn-primary  py-2 px-5">
+                </div>
+              </div>
+            </form>
+
+               <div class="agile-grids">
+				<!-- tables -->
+
+				<div class="agile-tables">
+					<div class="w3l-table-info">
+					   <h2>Search Result</h2>
+					    <table id="table">
+						<thead>
+						  <tr>
+                              <th>ID</th>
+                              <th>Name</th>
+							<th>Gender</th>
+                              <th>Address</th>
+							<th></th>
+							<!--<th></th>-->
+
+						  </tr>
+						</thead>
+                            <tbody>
+                            {%  for row in data %}
+
+						  <tr>
+                              <td>{{ row.id }}</td>
+							<td>{{ row.name }}</td>
+                              <td>{{ row.gender }}</td>
+                              <td>{{row.address}}</td>
+						        <td ><a href="{% url 'sendrequestaction' value=row.id %}" >Send Request</a></td>
+                        <!--<td ><a href="#">DELETE</a></td>-->
+                              </tr>
+              {% endfor %}
+
+
+						</tbody>
+					  </table>
+					</div>
+                </div>
+</div>
+
+          </div>
+
+
+
+
+
+          <div class="col-lg-4">
+            <div class="p-4 mb-3 bg-white"  style="background-image: url('/static/user/images/k1 (11).jpg'); height:300px;">
+            </div>
+            <!--<div class="p-4 mb-3 bg-white" style="background-image: url('/static/user/images/k1 (11).jpg'); height:300px;" >-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% include "user/footer.html" %}

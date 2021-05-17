@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html lang="en">
+  <head>
+    <title>Blood bank </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'guestuser/fonts/icomoon/style.css'%}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'user/css/table-style.css'%}" />
+    <link rel="stylesheet" href="{% static 'user/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'user/css/magnific-popup.css'%}">
+    <link rel="stylesheet" href="{% static 'user/css/jquery-ui.css'%}">
+    <link rel="stylesheet" href="{% static 'user/css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'user/css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'user/css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'user/css/animate.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+
+
+
+    <link rel="stylesheet" href="{% static 'user/fonts/flaticon/font/flaticon.css'%}">
+
+    <link rel="stylesheet" href="{% static 'user/css/aos.css'%}">
+
+    <link rel="stylesheet" href="{% static 'user/css/style.css'%}">
+
+
+  </head>
+  <body>
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+
+
+    <div class="site-navbar-wrap js-site-navbar bg-white">
+
+      <div class="container">
+        <div class="site-navbar bg-light">
+          <div class="py-1">
+            <div class="row align-items-center">
+              <div class="col-2">
+                <h2 class="mb-0 site-logo"><a href="index.html">Blood<strong class="font-weight-bold">Buddies</strong> </a></h2>
+              </div>
+              <div class="col-10">
+                <nav class="site-navigation text-right" role="navigation">
+                  <div class="container">
+                    <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3">
+
+                    </span></a></div>
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                         {%if request.session.role %}
+                        <li><a href="{% url 'viewprofile' %}">View Profile</a></li>
+                        {%else %}
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        {% endif %}
+
+                      <li class="has-children">
+                        <a href="category.html">Register</a>
+                         <ul class="dropdown arrow-top">
+                          {%if request.session.role %}
+                             {% ifequal request.session.role "doner"%}
+
+                           <li><a href="{% url 'updatestatus' %}">Status</a></li>
+                            <li><a href="{% url 'viewRequest' %}">view Requests</a></li>
+                          {% endifequal%}
+                          {% ifequal request.session.role "accepter"%}
+
+                          <li><a href="{% url 'search' %}">Search</a></li>
+                          {% endifequal%}
+                             {%else %}
+                          <li><a href="{% url 'donerReg' %}">Doner</a></li>
+                          <li><a href="{% url 'accepterReg' %}">Accepter</a></li>
+                             {% endif %}
+                        </ul>
+                      </li>
+                        {%if request.session.role %}
+                      <li><a href="{% url 'logout' %}"><span class="bg-primary text-white py-3 px-4 rounded">
+                        <span class="icon-plus mr-3">
+                      </span>Logout</span></a></li>
+                        <li><b>{{ request.session.role }}</b></li>
+                        {% else %}
+                        <li><a href="{% url 'loginView' %}"><span class="bg-primary text-white py-3 px-4 rounded">
+                        <span class="icon-plus mr-3">
+                      </span>Login</span></a></li>
+                        {% endif %}
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 113px;"></div>
+
+    <div class="unit-5 overlay"  style="background-image: url('/static/user/images/hero_1.jpg'); height:300px;">
+      <div class="container text-center" >
+        <!-- <h2 class="mb-0"></h2>
+        <p class="mb-0 unit-6"><a href="index.html"></a> <span class="sep">></span> <span></span></p> -->
+      </div>
+    </div>
