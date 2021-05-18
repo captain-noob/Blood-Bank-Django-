@@ -4,7 +4,7 @@ from django.http import HttpResponse,HttpResponseRedirect,HttpRequest
 from django.template import loader
 from .models import bloodgroup,login,donerreg,accepterreg,donerstatus,sendrequest
 
-# Create your views here.
+# Create your views here. 
 
 def index(request):
     return render(request,'user/home.html')
